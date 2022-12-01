@@ -13,18 +13,16 @@ TEST = "test.txt"
 INPUT = "input.txt"
 
 with open(PATH+INPUT) as file:
-    calories = []
-    elf = []
-    for text_line in file:                              #calories is a list of each elf inventory
-        if text_line == "\n":
-            calories.append(elf)
-            elf = []
-        else: elf.append(int(text_line.strip()))
-    calories.append(elf)                                #accounting for the last line in the file
+    #split all the inventories
+    calories = file.read().split("\n\n")           
+    #create tuples from the inventories            
+    calories = [tuple(map(int, elf.split())) for elf in calories]   
     
-    total = [sum(item) for item in calories]            #total is a list of each elf total calories carried
-    total = sorted(total, reverse=True)
+    #total is the list of the sum of each inventory sorted from highest to lowest
+    total = sorted([sum(item) for item in calories], reverse=True)
     
-    print("Part 1: "+str(total[0]))                     #Part 1 asks the top calories carried
-    print("Part 2: "+str(total[0]+total[1]+total[2]))   #Part 2 asks the sum of the top three
+    #Part 1 asks the highest calories carried
+    print("Part 1: "+str(total[0]))                     
+    #Part 2 asks the sum of the highest three        
+    print("Part 2: "+str(sum(total[:3])))                           
     
