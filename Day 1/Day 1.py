@@ -8,7 +8,23 @@ Day 1
 @author: NaimarDL
 """
 
-PATH = 'C:/Users/Utente/Desktop/Advent 2021/Day 15/'
+PATH = 'C:/Users/Utente/Desktop/Advent 2022/Day 1/'
 TEST = "test.txt"
 INPUT = "input.txt"
 
+with open(PATH+INPUT) as file:
+    calories = []
+    elf = []
+    for text_line in file:
+        if text_line == "\n":
+            calories.append(elf)
+            elf = []
+        else: elf.append(int(text_line.strip()))
+        
+    most = 0
+    for item in calories:
+        cal = sum(item)
+        if cal > most: most = cal
+    
+    print("Part 1: "+str(most))
+    
