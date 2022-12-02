@@ -12,14 +12,11 @@ def myScore(result, shape):
     elif result == -1 or result == 2: return numVal(shape) + 6        #win
     elif result == -2 or result == 1: return numVal(shape) + 0        #lose
     
-def myShape(result, oShape):
-    if result == 0: return lose(oShape)
-    elif result == 3: return oShape
-    elif result == 6: return win(oShape)
+def myScore2(result, oShape):
+    if result == 0: return numVal(lose(oShape))+result
+    elif result == 3: return numVal(oShape)+result
+    elif result == 6: return numVal(win(oShape))+result
     
-def myScore2(result, shape):
-    return numVal(shape)+result
-
 def lose(oShape):
     if oShape == "A": return "C"
     elif oShape == "B": return "A"
@@ -56,6 +53,6 @@ with open(INPUT) as file:
     
     score2 = 0
     for item in text:
-        score2 += myScore2(numRes(item[1]), myShape(numRes(item[1]), item[0]))
+        score2 += myScore2(numRes(item[1]), item[0])
     print("Part 2: "+str(score2))
     
