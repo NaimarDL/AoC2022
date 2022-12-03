@@ -7,15 +7,18 @@ Day 2
 
 @author: NaimarDL
 """
+
+from itertools import cycle
+
 def myScore(result, shape):
     if result == 0: return numVal(shape) + 3                          #draw
     elif result == -1 or result == 2: return numVal(shape) + 6        #win
     elif result == -2 or result == 1: return numVal(shape) + 0        #lose
     
 def myScore2(result, oShape):
-    if result == 0: return numVal(lose(oShape))+result
-    elif result == 3: return numVal(oShape)+result
-    elif result == 6: return numVal(win(oShape))+result
+    if result == 0: return numVal(lose(oShape)) + result
+    elif result == 3: return numVal(oShape) + result
+    elif result == 6: return numVal(win(oShape)) + result
     
 def lose(oShape):
     if oShape == "A": return "C"
@@ -43,6 +46,8 @@ INPUT = "input.txt"
 with open(INPUT) as file:
     text = file.read().strip().split("\n")
     text = [tuple(item.split(" ")) for item in text]
+    
+    #rules = cycle([1,2,3])
     
     score = 0
     for item in text:
