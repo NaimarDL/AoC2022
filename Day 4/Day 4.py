@@ -19,8 +19,8 @@ def contain(item):
 def overlap(item):
     if item[0][0] <= item[1][0] and item[0][1] >= item[1][0]: return True
     elif item[0][0] <= item[1][1] and item[0][1] >= item[1][1]: return True
-    elif item[1][0] >= item[0][0] and item[1][1] <= item[0][0]: return True
-    elif item[1][0] >= item[0][1] and item[1][1] <= item[0][1]: return True
+    elif item[1][0] <= item[0][0] and item[1][1] >= item[0][0]: return True
+    elif item[1][0] <= item[0][1] and item[1][1] >= item[0][1]: return True
     return False
 
 with open(INPUT) as file:
