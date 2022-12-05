@@ -12,8 +12,8 @@ EXAMPLE = "example.txt"
 INPUT = "input.txt"
 
 def contain(item):
-    if item[0][0] >= item[1][0] and item[0][1] <= item[1][1]: return True
-    elif item[1][0] >= item[0][0] and item[1][1] <= item[0][1]: return True
+    if item[0][0] <= item[1][0] and item[0][1] >= item[1][1]: return True
+    elif item[1][0] <= item[0][0] and item[1][1] >= item[0][1]: return True
     return False
 
 def overlap(item):
@@ -26,7 +26,6 @@ def overlap(item):
 with open(INPUT) as file:
     text = file.read().split("\n")
     text = [list(list(int(item) for item in tup.split("-")) for tup in tup.split(",")) for tup in text]
-    
     contains = 0
     overlaps = 0
     for item in text:
